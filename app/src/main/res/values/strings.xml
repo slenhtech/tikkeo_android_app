@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">Tikkeo</string>
+
+    <string name="menu_home">Accueil</string>
+    <string name="menu_my_tickets">Mes Tickets</string>
+    <string name="menu_my_favorites">Mes Favoris</string>
+    <string name="menu_notifications">Notifications</string>
+    <string name="menu_settings">Paramètres</string>
+    <string name="menu_share">Partager</string>
+    <string name="menu_about">À Propos De Nous</string>
+
+    <string name="fragment_feed">Feed</string>
+    <string name="fragment_recommanded">Recommandations</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string name="placeholder">Lorem ipsum dolor sit amet.</string>
+
+    <!-- String used to wrap navigation item descriptions for a11y users to indicate the user
+         interface element is a menu item. This string indicates a selected menu item -->
+    <string name="navdrawer_selected_menu_item_a11y_wrapper">%1$s selected menu item</string>
+
+    <!-- String used to wrap navigation item descriptions for a11y users to indicate the user
+         interface element is a menu item. -->
+    <string name="navdrawer_menu_item_a11y_wrapper">%1$s  menu item</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="action_search">Recherche</string>
+
+    <string name="account_box_salute">Salut, %1$s</string>
+    <string name="account_box_salute_placeholer">Salut, Tikkeiste</string>
+    <string name="location_placeholder">Libreville</string>
+
+    <string name="login">Connexion</string>
+    <string name="signup">Inscription</string>
 </resources>

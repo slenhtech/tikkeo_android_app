@@ -7,4 +7,15 @@
     <color name="windowBackground">#CCCCCC</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="textColorSecondary">#333333</color>
+    <color name="divider">#CCCCCC</color>
+
+    <color name="navdrawer_selected_item_background">@color/colorPrimary</color>
+    <color name="navdrawer_icon_tint">@color/colorPrimary</color>
+    <color name="navdrawer_icon_tint_selected">@color/textColorPrimary</color>
+
+    <color name="tab_icon_tint">#bfbfbf</color>
+    <color name="tab_icon_tint_selected">#ffffff</color>
+    <color name="account_box_location_change_button">#e0bfbfbf</color>
+
+    <color name="black_filter">#30ffffff</color>
 </resources>
