@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Tikkeo</string>
+    <string name="app_descrip">Merci de vous connecter et de vous inscrire.Choisisez vos intérêts et sujets</string>
+    <string name="app_inscription">Inscription</string>
+    <string name="app_connexion">Connexion</string>
 </resources>
