@@ -10,6 +10,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -62,7 +65,7 @@ public abstract class NavDrawerBaseActivity extends AppCompatActivity {
     };
 
     // delay to launch nav drawer item, to allow close animation to play
-    private static final int NAVDRAWER_LAUNCH_DELAY = 250;
+    private static final int NAVDRAWER_LAUNCH_DELAY = 150;
 
     // fade in and fade out durations for the main content when switching between
     // different Activities of the app through the Nav Drawer
@@ -91,6 +94,9 @@ public abstract class NavDrawerBaseActivity extends AppCompatActivity {
 
         mHandler = new Handler();
 
+        ActionBar ab = getSupportActionBar();
+        if( null != ab )
+            ab.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -106,6 +112,33 @@ public abstract class NavDrawerBaseActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
 
         setupNavDrawer();
+
+//        View mainContent = findViewById(R.id.main_content);
+//        if( null != mainContent ) {
+//            mainContent.setAlpha(0);
+//            mainContent.animate().alpha(1).setDuration(MAIN_CONTENT_FADEIN_DURATION);
+//        }else {
+//            Log.d(LOG, "No view with ID main_content to fade in.");
+//        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                Toast.makeText(this, getString(R.string.action_search), Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     protected boolean hasActionBar() {
@@ -118,14 +151,14 @@ public abstract class NavDrawerBaseActivity extends AppCompatActivity {
     private void setupActionbar() {
         if( mActionBarToolbar == null) {
             mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
-        }
 
-        if( null != mActionBarToolbar ) {
-            setSupportActionBar(mActionBarToolbar);
-            mActionBar = getSupportActionBar();
-            if( null != mActionBar ) {
-                mActionBar.setHomeAsUpIndicator(R.drawable.ic_home);
-                mActionBar.setDisplayHomeAsUpEnabled(true);
+            if( null != mActionBarToolbar ) {
+                setSupportActionBar(mActionBarToolbar);
+//                mActionBar = getSupportActionBar();
+//                if( null != mActionBar ) {
+//                    mActionBar.setHomeAsUpIndicator(R.drawable.ic_home);
+//                    mActionBar.setDisplayHomeAsUpEnabled(true);
+//                }
             }
         }
     }
@@ -212,6 +245,14 @@ public abstract class NavDrawerBaseActivity extends AppCompatActivity {
         populateNavDrawer();
     }
 
+    @Override
+    public void onBackPressed() {
+        if ( isNavDrawerOpen() )
+            closeNavDrawer();
+        else
+            super.onBackPressed();
+    }
+
     /**
      * Defines the Navigation Drawer items to display by updating {@code mNavDrawerItems} then
      * forces the Navigation Drawer to redraw itself.
@@ -270,8 +311,8 @@ public abstract class NavDrawerBaseActivity extends AppCompatActivity {
         item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                onNavDrawerItemClicked(itemId);
-                Toast.makeText(NavDrawerBaseActivity.this, "t", Toast.LENGTH_LONG).show();
+                onNavDrawerItemClicked(itemId);
+//                Toast.makeText(NavDrawerBaseActivity.this, "t", Toast.LENGTH_LONG).show();
             }
         });
         return item;
@@ -298,8 +339,8 @@ public abstract class NavDrawerBaseActivity extends AppCompatActivity {
         setSelectedNavDrawerItem(itemId);
         // fade out the main content
         View mainContent = findViewById(R.id.main_content);
-        if( null != mainContent )
-            mainContent.animate().alpha(0).setDuration(MAIN_CONTENT_FADEOUT_DURATION);
+//        if( null != mainContent )
+//            mainContent.animate().alpha(0).setDuration(MAIN_CONTENT_FADEOUT_DURATION);
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
     }
@@ -318,28 +359,21 @@ public abstract class NavDrawerBaseActivity extends AppCompatActivity {
     private void goToNavDrawerItem(int item) {
         switch (item) {
             case NAVDRAWER_HOME:
-
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
                 break;
             case NAVDRAWER_MY_TICKETS:
-
+                createBackStack(new Intent(this, MyTicketsActivity.class));
                 break;
             case NAVDRAWER_MY_FAVORITES:
-
-                break;
             case NAVDRAWER_NOTIFICATIONS:
-
-                break;
             case NAVDRAWER_SETTINGS:
-
-                break;
             case NAVDRAWER_SHARE:
-
-                break;
             case NAVDRAWER_ABOUT:
-
+                unavailableMenu();
                 break;
         }
-        Toast.makeText(this, getString(NAVDRAWER_TITLE_RES_ID[item]), Toast.LENGTH_LONG).show();
+
     }
 
     /**
@@ -356,6 +390,19 @@ public abstract class NavDrawerBaseActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+    }
+
+    protected boolean isNavDrawerOpen() {
+        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START);
+    }
+
+    protected void closeNavDrawer() {
+        if( null != mDrawerLayout )
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    private void unavailableMenu() {
+        Toast.makeText(this, "Ceci est une démo. Contenu indisponible pour l'instant", Toast.LENGTH_LONG).show();
     }
 
     public void setActionBarTitle(String title) {

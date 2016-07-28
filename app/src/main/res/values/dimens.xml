@@ -4,6 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_mini">8dp</dimen>
+    <dimen name="padding_white_box">20dp</dimen>
 
     <dimen name="navdrawer_width">280dp</dimen>
     <dimen name="navdrawer_chosen_account_height">220dp</dimen>
@@ -21,4 +23,24 @@
     <dimen name="account_box_salute">16sp</dimen>
     <dimen name="account_box_change_location_button_min_width">170dp</dimen>
     <dimen name="account_box_change_location_button_height">40dp</dimen>
+
+    <dimen name="more">12sp</dimen>
+
+    <dimen name="white_box_padding_top_bottom">10dp</dimen>
+
+    <dimen name="white_box_image_height">200dp</dimen>
+    <dimen name="white_box_margin_bottom">6dp</dimen>
+
+    <dimen name="event_box_cover_height">160dp</dimen>
+    <dimen name="event_box_title_padding_top_bottom">6dp</dimen>
+    <dimen name="event_box_title_padding_left_right">10dp</dimen>
+    <dimen name="event_box_title_size">16sp</dimen>
+    <dimen name="event_box_margin_bottom">12dp</dimen>
+    <dimen name="app_bar_height">220dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="ticket_card_height">120dp</dimen>
+    <dimen name="ticket_card_padding">8dp</dimen>
+    <dimen name="ticket_in_list_cover_width">130dp</dimen>
 </resources>

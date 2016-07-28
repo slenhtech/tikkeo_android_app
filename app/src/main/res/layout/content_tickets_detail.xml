@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.slenhtech_corp.tikkeo.TicketsDetailActivity"
+    tools:showIn="@layout/activity_tickets_detail">
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ticket_pager"/>
+    <com.viewpagerindicator.LinePageIndicator
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:selectedColor="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/ticket_pager_indicator"/>
+</LinearLayout>

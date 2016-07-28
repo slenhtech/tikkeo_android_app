@@ -1,5 +1,6 @@
 package com.slenhtech_corp.tikkeo;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -7,10 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
 import com.slenhtech_corp.tikkeo.adapter.MainFragmentsPagerAdapter;
 
@@ -36,25 +34,6 @@ public class MainActivity extends NavDrawerBaseActivity implements ViewPager.OnP
             tabLayout.setupWithViewPager(viewPager);
 
         setupTabIcon();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.action_search:
-                Toast.makeText(this, getString(R.string.action_search), Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     @Override
@@ -94,5 +73,10 @@ public class MainActivity extends NavDrawerBaseActivity implements ViewPager.OnP
         if(mIconTints != null)
             DrawableCompat.setTintList(icon, mIconTints);
         return icon;
+    }
+
+    public void openDetail(View view) {
+//        Toast.makeText(this, "detail", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, DetailActivity.class));
     }
 }
